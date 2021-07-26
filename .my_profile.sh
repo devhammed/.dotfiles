@@ -80,6 +80,9 @@ export BROWSER="google-chrome"
 # Prevent Python Bytecode creation
 export PYTHONDONTWRITEBYTECODE="off"
 
+# Load WP Environment
+export WP_CLI_SSH_PRE_CMD='export PATH=$HOME/bin:$PATH'
+
 # Custom Aliases
 alias rm='rm -i'
 alias kgif='mkgif 30 720 0:00 0'
