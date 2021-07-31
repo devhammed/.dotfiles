@@ -12,6 +12,8 @@ if [[ $# -ne 1 ]]; then
   exit
 fi
 
-subtitle="${1%.*}.srt"
-output="${1%.*}.srt.mp4"
+filename="${1##*/}"
+extension="${1##*.}"
+subtitle="$filename.srt"
+output="$filename.srt.$extension"
 ffmpeg -i "$1" -f srt -i "$subtitle"  -c:v copy -c:s mov_text "$output" && rm "$1" "$subtitle" && mv "$output" "$1"
