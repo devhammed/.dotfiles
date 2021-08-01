@@ -13,7 +13,8 @@ if [[ $# -ne 1 ]]; then
 fi
 
 filename="${1%.*}"
-extension="${1##*.}"
 subtitle="$filename.srt"
-output="$filename.srt.$extension"
-ffmpeg -i "$1" -f srt -i "$subtitle"  -c:v copy -c:s mov_text "$output" && rm "$1" "$subtitle" && mv "$output" "$1"
+output="$filename.srt.mp4"
+final_output="$filename.mp4"
+
+ffmpeg -i "$1" -f srt -i "$subtitle"  -c:v copy -c:s mov_text "$output" && rm "$1" "$subtitle" && rm "$1" && mv "$output" "$final_output"
